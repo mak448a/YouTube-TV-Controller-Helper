@@ -14,3 +14,4 @@ Control your TV with a game controller! Sadly, this doesn't work on Wayland. ðŸ˜
 - PS Button: Refresh website
 - Right trigger: Turn up volume
 - Left trigger: Turn down volume
+- Start: Open YouTube (only works when browser is opened)
