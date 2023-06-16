@@ -58,4 +58,7 @@ while True:
     if joystick.get_button(0):  # Cross
         raise SystemExit(0)
 
+    if joystick.get_button(16):
+        pag.typewrite("f")
+
     pag.moveTo(coordinate)

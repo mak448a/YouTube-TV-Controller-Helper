@@ -3,6 +3,7 @@ Control your TV with a game controller! Sadly, this doesn't work on Wayland. ðŸ˜
 
 ## How to use
 - Left: click
+- Right: Type "f"
 - Up: Scroll up
 - Down: Scroll down
 - Right stick: Move cursor
