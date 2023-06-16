@@ -17,7 +17,10 @@ SPEED = 100
 coordinate = [pag.size()[0] / 2, pag.size()[1] / 2]
 
 while True:
-    pygame.event.get()
+    for event in pygame.event.get():
+        if event.type == pygame.JOYDEVICEREMOVED:
+            raise SystemExit("Whoops removed a joystick")
+
     # Get both axes of the right stick
     axis = joystick.get_axis(3)
     axis2 = joystick.get_axis(4)
