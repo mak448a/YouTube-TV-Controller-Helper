@@ -80,9 +80,9 @@ while True:
     if platform.system() == "Linux":
         if joystick.get_button(6):  # Left trigger
             subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
-            playsound.playsound("/usr/share/sounds/freedesktop/stereo/bell.oga")
+            playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
         if joystick.get_button(7):  # Right trigger
             subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
-            playsound.playsound("/usr/share/sounds/freedesktop/stereo/bell.oga")
+            playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
 
     pag.moveTo(coordinate)
