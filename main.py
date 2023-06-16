@@ -1,3 +1,6 @@
+import platform
+import subprocess
+
 import pyautogui as pag
 import pygame
 
@@ -72,5 +75,11 @@ while True:
         pag.hotkey("ctrl", "r")
     if joystick.get_button(8):  # Select
         pag.hotkey("win", "2")
+
+    if platform.system() == "Linux":
+        if joystick.get_button(6):  # Left trigger
+            subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
+        if joystick.get_button(7):  # Right trigger
+            subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
 
     pag.moveTo(coordinate)
