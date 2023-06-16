@@ -1,0 +1,58 @@
+import pyautogui as pag
+import pygame
+
+pygame.init()
+joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+
+try:
+    joystick = joysticks[0]
+except IndexError:
+    raise Exception("You must have a controller connected!")
+
+
+pag.FAILSAFE = True
+SPEED = 80
+# pag.PAUSE = 1
+
+coordinate = [5, 5]
+
+while True:
+    pygame.event.get()
+    # Get both axes of the right stick
+    axis = joystick.get_axis(3)
+    axis2 = joystick.get_axis(4)
+
+    if axis > .2:
+        coordinate[0] += axis * SPEED
+        if coordinate[0] > pag.size()[0]:
+            coordinate[0] = pag.size()[0] - 5
+    elif axis < -.2:
+        coordinate[0] += axis * SPEED
+        if coordinate[0] < 0:
+            coordinate[0] = 5
+
+    if axis2 > .2:
+        coordinate[1] += axis2 * SPEED
+        if coordinate[1] > pag.size()[1]:
+            coordinate[1] = pag.size()[1] - 5
+    elif axis2 < -.2:
+        coordinate[1] += axis2 * SPEED
+        if coordinate[1] < 0:
+            coordinate[1] = 5
+
+    if joystick.get_button(15):  # Left arrow
+        pag.click()
+
+    if joystick.get_button(4):  # L1
+        SPEED -= 20
+        pass
+    if joystick.get_button(5):  # R1
+        SPEED += 20
+        pass
+
+    if joystick.get_button(13):  # Up
+        pag.scroll(3)
+    if joystick.get_button(14):  # Down
+        pag.scroll(-3)
+
+    pag.moveTo(coordinate)
