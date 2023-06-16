@@ -55,4 +55,7 @@ while True:
     if joystick.get_button(14):  # Down
         pag.scroll(-3)
 
+    if joystick.get_button(0):  # Cross
+        raise SystemExit(0)
+
     pag.moveTo(coordinate)
