@@ -14,7 +14,7 @@ pag.FAILSAFE = True
 SPEED = 100
 # pag.PAUSE = 1
 
-coordinate = [5, 5]
+coordinate = [pag.size()[0] / 2, pag.size()[1] / 2]
 
 while True:
     pygame.event.get()
