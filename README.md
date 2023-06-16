@@ -1,2 +1,2 @@
 # TV-Controller
-Controll your TV with a game controller!
+Control your TV with a game controller!
