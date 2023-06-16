@@ -11,7 +11,7 @@ except IndexError:
 
 
 pag.FAILSAFE = True
-SPEED = 80
+SPEED = 100
 # pag.PAUSE = 1
 
 coordinate = [5, 5]
