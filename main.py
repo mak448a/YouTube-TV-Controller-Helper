@@ -58,7 +58,16 @@ while True:
     if joystick.get_button(0):  # Cross
         raise SystemExit(0)
 
-    if joystick.get_button(16):
+    if joystick.get_button(16):  # Right
         pag.typewrite("f")
+    if joystick.get_button(9):  # Start
+        pag.hotkey("ctrl", "t")
+        pag.typewrite("youtube.com")
+        pag.keyDown("enter")
+        pag.keyUp("enter")
+    if joystick.get_button(10):  # PS
+        pag.hotkey("ctrl", "r")
+    if joystick.get_button(8):  # Select
+        pag.hotkey("win", "2")
 
     pag.moveTo(coordinate)

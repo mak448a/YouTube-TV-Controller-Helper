@@ -10,3 +10,5 @@ Control your TV with a game controller! Sadly, this doesn't work on Wayland. ðŸ˜
 - L1: Make cursor speed slower
 - R1: Make cursor speed faster
 - Cross: Close program
+- Select: Open second item on taskbar
+- PS Button: Refresh website
