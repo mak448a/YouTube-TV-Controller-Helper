@@ -23,7 +23,11 @@ coordinate = [pag.size()[0] / 2, pag.size()[1] / 2]
 while True:
     for event in pygame.event.get():
         if event.type == pygame.JOYDEVICEREMOVED:
-            raise SystemExit("Whoops removed a joystick")
+            print("Removed Joystick.")
+        if event.type == pygame.JOYDEVICEADDED:
+            joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+            joystick = joysticks[0]
+            print("Added Joystick!")
 
     # Get both axes of the right stick
     axis = joystick.get_axis(3)
