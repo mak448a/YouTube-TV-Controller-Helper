@@ -1,5 +1,5 @@
 # TV-Controller
-Control your TV with a game controller! Sadly, this doesn't work on Wayland. 😢
+Control your TV with a game controller! Sadly, some functions don't work on Wayland. 😢
 
 ## How to use
 - Left: click

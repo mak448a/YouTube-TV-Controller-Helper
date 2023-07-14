@@ -7,4 +7,4 @@
 HERE="$(dirname "$(readlink -f "${0}")")"
 cd $HERE
 source venv/bin/activate
-python3 main.py
+python3 yt_tv.py
