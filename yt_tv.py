@@ -18,6 +18,8 @@ pag.FAILSAFE = True
 in_action = False
 pygame.time.set_timer(pygame.USEREVENT, 500)
 # pag.PAUSE = 1
+left, right, up, down = 0, 0, 0, 0
+increment = False
 
 while True:
     for event in pygame.event.get():
@@ -35,15 +37,24 @@ while True:
                 pag.press("escape")
             if event.button == 13:
                 pag.press("up")
+                up = 1
+                increment = True
             if event.button == 14:
                 pag.press("down")
+                down = 1
+                increment = True
             if event.button == 15:
                 pag.press("left")
+                left = 1
+                increment = True
+                print(increment, "Yay")
             if event.button == 16:
                 pag.press("right")
-            if event.button == 10:
-                # PS button
-                pag.press("escape")
+                right = 1
+                increment = True
+        if event.type == pygame.JOYBUTTONUP:
+            up, down, left, right = 0, 0, 0, 0
+            increment = False
 
         if event.type == pygame.USEREVENT:
             in_action = False
@@ -65,6 +76,24 @@ while True:
                 if event.value < -0.5:
                     pag.press("up")
                     in_action = True
+    if left > 0:
+        left += 1
+    if right > 0:
+        right += 1
+    if up > 0:
+        up += 1
+    if down > 0:
+        down += 1
+    pygame.time.Clock().tick(120)
+
+    if left > 30:
+        pag.press("left")
+    if right > 30:
+        pag.press("right")
+    if up > 30:
+        pag.press("up")
+    if down > 30:
+        pag.press("down")
 
     # Get both axes of the right stick
     # axis = joystick.get_axis(3)
@@ -116,7 +145,13 @@ while True:
     # if joystick.get_button(8):  # Select
     #     pag.hotkey("win", "2")
     #
+    # if joystick.get_button(6):  # Left trigger
+    #     pag.press("volumedown")
+    # if joystick.get_button(7):  # Right trigger
+    #     pag.press("volumeup")
     if joystick.get_button(6):  # Left trigger
-        pag.press("volumedown")
+        subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
+        playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
     if joystick.get_button(7):  # Right trigger
-        pag.press("volumeup")
+        subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
+        playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
