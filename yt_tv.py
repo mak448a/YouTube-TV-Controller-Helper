@@ -155,3 +155,4 @@ while True:
     if joystick.get_button(7):  # Right trigger
         subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
         playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
+
