@@ -1,4 +1,3 @@
-import platform
 import subprocess
 
 import playsound
@@ -52,6 +51,8 @@ while True:
                 pag.press("right")
                 right = 1
                 increment = True
+            if event.button == 9:
+                pag.press("f11")
         if event.type == pygame.JOYBUTTONUP:
             up, down, left, right = 0, 0, 0, 0
             increment = False
@@ -155,4 +156,3 @@ while True:
     if joystick.get_button(7):  # Right trigger
         subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
         playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
-
