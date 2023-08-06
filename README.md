@@ -1,5 +1,14 @@
 # TV-Controller
-Control your TV with a game controller! Sadly, some functions don't work on Wayland. 😢
+Control YouTube TV's web interfact with a game controller!
+Set your user agent as a [PS4](https://www.reddit.com/r/htpc/comments/y5o7mi/youtube_leanback_tv_useragent_for_4k_60fps/)
+using User Agent Switcher, and load up [YouTube TV!](https://youtube.com/tv)
+
+Sadly, some functions don't work on Wayland. 😢
+
+## Prerequisites
+- You need pactl
+- Linux (Fedora, Ubuntu, Arch, Debian, etc.)
+- Xorg (or a browser that uses XWayland, e.g. Firefox 100 with [disabled updates](https://winaero.com/how-to-disable-firefox-background-updates/))
 
 ## How to use
 - Left: click
