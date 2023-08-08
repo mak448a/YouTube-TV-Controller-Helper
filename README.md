@@ -8,7 +8,7 @@ Sadly, some functions don't work on Wayland. 😢
 ## Prerequisites
 - You need pactl
 - Linux (Fedora, Ubuntu, Arch, Debian, etc.)
-- Xorg (or a browser that uses XWayland, e.g. Firefox 100 with [disabled updates](https://winaero.com/how-to-disable-firefox-background-updates/))
+- Xorg (or a browser that uses XWayland, e.g. [Firefox 100](https://download-installer.cdn.mozilla.net/pub/firefox/releases/100.0/linux-x86_64/en-US/) with [disabled updates](https://winaero.com/how-to-disable-firefox-background-updates/))
 
 ## How to use
 - Left: click
