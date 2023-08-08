@@ -9,9 +9,9 @@ Note: This doesn't have press and hold support yet.
 
 
 ## Prerequisites
-- You need pactl installed
-- Linux (Fedora, Ubuntu, Arch, Debian, etc.)
-- Xorg (or a browser that uses XWayland, e.g. [Firefox 100](https://download-installer.cdn.mozilla.net/pub/firefox/releases/100.0/linux-x86_64/en-US/) with [disabled updates](https://winaero.com/how-to-disable-firefox-background-updates/))
+- For Linux: You need pactl installed
+- For Linux: Xorg (or a browser that uses XWayland, e.g. [Firefox 100](https://download-installer.cdn.mozilla.net/pub/firefox/releases/100.0/linux-x86_64/en-US/) with [disabled updates](https://winaero.com/how-to-disable-firefox-background-updates/))
+- Python (needs to be on your PATH variable)
 
 ## Setup and Run
 Install dependencies
