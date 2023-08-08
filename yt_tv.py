@@ -1,4 +1,5 @@
 import subprocess
+import platform
 
 import playsound
 import pyautogui as pag
@@ -151,8 +152,12 @@ while True:
     # if joystick.get_button(7):  # Right trigger
     #     pag.press("volumeup")
     if joystick.get_button(6):  # Left trigger
+        if platform.system() != "Linux":
+            pag.press("volumedown")
         subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
         playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
     if joystick.get_button(7):  # Right trigger
+        if platform.system() != "Linux":
+            pag.press("volumeup")
         subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
         playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
