@@ -4,6 +4,10 @@ import platform
 import playsound
 import pyautogui as pag
 import pygame
+import time
+
+subprocess.call(["rfkill", "unblock", "bluetooth"])
+time.sleep(5)
 
 pygame.init()
 joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
@@ -142,8 +146,6 @@ while True:
     #     pag.typewrite("youtube.com")
     #     pag.keyDown("enter")
     #     pag.keyUp("enter")
-    # if joystick.get_button(10):  # PS
-    #     pag.hotkey("ctrl", "r")
     # if joystick.get_button(8):  # Select
     #     pag.hotkey("win", "2")
     #
@@ -151,6 +153,8 @@ while True:
     #     pag.press("volumedown")
     # if joystick.get_button(7):  # Right trigger
     #     pag.press("volumeup")
+    if joystick.get_button(10):  # PS
+        quit()
     if joystick.get_button(6):  # Left trigger
         if platform.system() != "Linux":
             pag.press("volumedown")
