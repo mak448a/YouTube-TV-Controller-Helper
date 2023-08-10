@@ -6,8 +6,10 @@ import pyautogui as pag
 import pygame
 import time
 
-subprocess.call(["rfkill", "unblock", "bluetooth"])
-time.sleep(5)
+
+if platform.system() == "Linux":
+    subprocess.call(["rfkill", "unblock", "bluetooth"])
+    time.sleep(5)
 
 pygame.init()
 joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
@@ -158,10 +160,12 @@ while True:
     if joystick.get_button(6):  # Left trigger
         if platform.system() != "Linux":
             pag.press("volumedown")
-        subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
-        playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
+        else:
+            subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
+            playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
     if joystick.get_button(7):  # Right trigger
         if platform.system() != "Linux":
             pag.press("volumeup")
-        subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
-        playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
+        else:
+            subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
+            playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
