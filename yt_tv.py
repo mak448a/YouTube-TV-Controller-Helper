@@ -45,16 +45,17 @@ while True:
             joystick = joysticks[0]
             print("Added Joystick!")
         if event.type == pygame.JOYBUTTONDOWN:
-            print(event.button)
+            # print(event.button)
             if event.button == 0:
-                pag.keyDown("enter")
+                # pag.keyDown("enter")
                 enter = True
                 subprocess.call(["ydotool", "key", "28:1"])
             if event.button == 1:
-                pag.press("escape")
+                # pag.press("escape")
+                subprocess.call(["ydotool", "key", "1:1", "1:0"])
             if event.button == 13:
                 # pag.press("up")
-                subprocess.call(["ydotool", "key", "103:1", "103:0"])
+                subprocess.call(["ydotool", "key", "1:1", "1:0"])
                 up = 1
                 increment = True
             if event.button == 14:
