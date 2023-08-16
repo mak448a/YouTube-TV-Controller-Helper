@@ -87,8 +87,9 @@ while True:
         move_by[1] = axis2 * SPEED
 
     if joystick.get_button(15):  # Left arrow
-        subprocess.call(["ydotool", "click", "0x00", "0x40"])
-        mouse_down = True
+        if not mouse_down:
+            subprocess.call(["ydotool", "click", "0x00", "0x40"])
+            mouse_down = True
     else:
         if mouse_down:
             subprocess.call(["ydotool", "click", "0x00", "0x80"])
