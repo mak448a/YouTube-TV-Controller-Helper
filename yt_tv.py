@@ -1,15 +1,23 @@
 import subprocess
 import platform
-
-import playsound
 import pyautogui as pag
 import pygame
 import time
+import os
+
+
+"""
+Notes:
+You can find ydotool event codes at /usr/include/linux/input-event-codes.h
+"""
 
 
 if platform.system() == "Linux":
     subprocess.call(["rfkill", "unblock", "bluetooth"])
-    time.sleep(5)
+    print("Waiting...")
+    # time.sleep(5)
+
+    os.system("ydotoold &")
 
 pygame.init()
 joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
@@ -26,6 +34,7 @@ pygame.time.set_timer(pygame.USEREVENT, 500)
 # pag.PAUSE = 1
 left, right, up, down = 0, 0, 0, 0
 increment = False
+enter = False
 
 while True:
     for event in pygame.event.get():
@@ -38,33 +47,47 @@ while True:
         if event.type == pygame.JOYBUTTONDOWN:
             print(event.button)
             if event.button == 0:
-                # pag.press("enter")
                 pag.keyDown("enter")
+                enter = True
+                subprocess.call(["ydotool", "key", "28:1"])
             if event.button == 1:
                 pag.press("escape")
             if event.button == 13:
-                pag.press("up")
+                # pag.press("up")
+                subprocess.call(["ydotool", "key", "103:1", "103:0"])
                 up = 1
                 increment = True
             if event.button == 14:
-                pag.press("down")
+                # pag.press("down")
+                subprocess.call(["ydotool", "key", "108:1", "108:0"])
                 down = 1
                 increment = True
             if event.button == 15:
-                pag.press("left")
+                # pag.press("left")
+                subprocess.call(["ydotool", "key", "105:1", "105:0"])
                 left = 1
                 increment = True
-                print(increment, "Yay")
             if event.button == 16:
-                pag.press("right")
+                # pag.press("right")
+                subprocess.call(["ydotool", "key", "106:1", "106:0"])
                 right = 1
                 increment = True
             if event.button == 9:
-                pag.press("f11")
+                # pag.press("f11")
+                subprocess.call(["ydotool", "key", "87:1", "87:0"])
+            if event.type == pygame.JOYBUTTONDOWN:
+                if event.button == 6:  # Left trigger
+                    # Volume down
+                    subprocess.call(["ydotool", "key", "114:1", "114:0"])
+                if event.button == 7:  # Right trigger
+                    # Volume up
+                    subprocess.call(["ydotool", "key", "115:1", "115:0"])
         if event.type == pygame.JOYBUTTONUP:
             up, down, left, right = 0, 0, 0, 0
             increment = False
-            pag.keyUp("enter")
+            if enter:
+                # pag.keyUp("enter")
+                subprocess.call(["ydotool", "key", "28:0"])
 
         if event.type == pygame.USEREVENT:
             in_action = False
@@ -97,13 +120,17 @@ while True:
     pygame.time.Clock().tick(120)
 
     if left > 30:
-        pag.press("left")
+        # pag.press("left")
+        subprocess.call(["ydotool", "key", "105:1", "105:0"])
     if right > 30:
-        pag.press("right")
+        # pag.press("right")
+        subprocess.call(["ydotool", "key", "106:1", "106:0"])
     if up > 30:
-        pag.press("up")
+        # pag.press("up")
+        subprocess.call(["ydotool", "key", "103:1", "103:0"])
     if down > 30:
-        pag.press("down")
+        # pag.press("down")
+        subprocess.call(["ydotool", "key", "108:1", "108:0"])
 
     # Get both axes of the right stick
     # axis = joystick.get_axis(3)
@@ -159,15 +186,15 @@ while True:
     #     pag.press("volumeup")
     if joystick.get_button(10):  # PS
         quit()
-    if joystick.get_button(6):  # Left trigger
-        if platform.system() != "Linux":
-            pag.press("volumedown")
-        else:
-            subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
-            playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
-    if joystick.get_button(7):  # Right trigger
-        if platform.system() != "Linux":
-            pag.press("volumeup")
-        else:
-            subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
-            playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
+    # if joystick.get_button(6):  # Left trigger
+    #     if platform.system() != "Linux":
+    #         pag.press("volumedown")
+    #     else:
+    #         subprocess.call(["pactl", "set-sink-volume", "0", "-5%"])
+    #         playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
+    # if joystick.get_button(7):  # Right trigger
+    #     if platform.system() != "Linux":
+    #         pag.press("volumeup")
+    #     else:
+    #         subprocess.call(["pactl", "set-sink-volume", "0", "+5%"])
+    #         playsound.playsound("/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")
