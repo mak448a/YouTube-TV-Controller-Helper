@@ -38,7 +38,8 @@ while True:
         if event.type == pygame.JOYBUTTONDOWN:
             print(event.button)
             if event.button == 0:
-                pag.press("enter")
+                # pag.press("enter")
+                pag.keyDown("enter")
             if event.button == 1:
                 pag.press("escape")
             if event.button == 13:
@@ -63,6 +64,7 @@ while True:
         if event.type == pygame.JOYBUTTONUP:
             up, down, left, right = 0, 0, 0, 0
             increment = False
+            pag.keyUp("enter")
 
         if event.type == pygame.USEREVENT:
             in_action = False
