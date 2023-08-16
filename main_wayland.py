@@ -99,15 +99,14 @@ while True:
         SPEED -= 1
         if SPEED < 0:
             SPEED = 0
-        pass
+
     if joystick.get_button(5):  # R1
         SPEED += 1
-        pass
 
     if joystick.get_button(0):  # Cross
         raise SystemExit(0)
 
     # if joystick.get_button(10):  # PS
-    #     pass
+    #       pass
 
     subprocess.call(["ydotool", "mousemove", "-x", f"{move_by[0]}", "-y", f"{move_by[1]}"])
