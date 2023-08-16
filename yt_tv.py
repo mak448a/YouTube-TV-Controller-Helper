@@ -15,7 +15,7 @@ You can find ydotool event codes at /usr/include/linux/input-event-codes.h
 if platform.system() == "Linux":
     subprocess.call(["rfkill", "unblock", "bluetooth"])
     print("Waiting...")
-    # time.sleep(5)
+    time.sleep(5)
 
     os.system("ydotoold &")
 
@@ -97,17 +97,21 @@ while True:
                 continue
             if event.axis == 0:
                 if event.value > 0.5:
-                    pag.press("right")
+                    # pag.press("right")
+                    subprocess.call(["ydotool", "key", "106:1"])
                     in_action = True
                 if event.value < -0.5:
-                    pag.press("left")
+                    # pag.press("left")
+                    subprocess.call(["ydotool", "key", "105:1"])
                     in_action = True
             elif event.axis == 1:
                 if event.value > 0.5:
-                    pag.press("down")
+                    # pag.press("down")
+                    subprocess.call(["ydotool", "key", "108:1"])
                     in_action = True
                 if event.value < -0.5:
-                    pag.press("up")
+                    # pag.press("up")
+                    subprocess.call(["ydotool", "key", "103:1"])
                     in_action = True
     if left > 0:
         left += 1
