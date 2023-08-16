@@ -55,7 +55,7 @@ while True:
                 subprocess.call(["ydotool", "key", "1:1", "1:0"])
             if event.button == 13:
                 # pag.press("up")
-                subprocess.call(["ydotool", "key", "1:1", "1:0"])
+                subprocess.call(["ydotool", "key", "103:1", "103:0"])
                 up = 1
                 increment = True
             if event.button == 14:
