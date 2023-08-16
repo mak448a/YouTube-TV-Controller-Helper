@@ -99,20 +99,20 @@ while True:
             if event.axis == 0:
                 if event.value > 0.5:
                     # pag.press("right")
-                    subprocess.call(["ydotool", "key", "106:1"])
+                    subprocess.call(["ydotool", "key", "106:1", "106:0"])
                     in_action = True
                 if event.value < -0.5:
                     # pag.press("left")
-                    subprocess.call(["ydotool", "key", "105:1"])
+                    subprocess.call(["ydotool", "key", "105:1", "105:0"])
                     in_action = True
             elif event.axis == 1:
                 if event.value > 0.5:
                     # pag.press("down")
-                    subprocess.call(["ydotool", "key", "108:1"])
+                    subprocess.call(["ydotool", "key", "108:1", "108:0"])
                     in_action = True
                 if event.value < -0.5:
                     # pag.press("up")
-                    subprocess.call(["ydotool", "key", "103:1"])
+                    subprocess.call(["ydotool", "key", "103:1", "103:0"])
                     in_action = True
     if left > 0:
         left += 1
