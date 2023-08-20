@@ -189,8 +189,9 @@ while True:
     #     pag.press("volumedown")
     # if joystick.get_button(7):  # Right trigger
     #     pag.press("volumeup")
-    if joystick.get_button(10):  # PS
+    if joystick.get_button(2):  # Triangle
         quit()
+
     # if joystick.get_button(6):  # Left trigger
     #     if platform.system() != "Linux":
     #         pag.press("volumedown")
