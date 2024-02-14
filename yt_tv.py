@@ -12,12 +12,13 @@ You can find ydotool event codes at /usr/include/linux/input-event-codes.h
 """
 
 
-if platform.system() == "Linux":
-    subprocess.call(["rfkill", "unblock", "bluetooth"])
-    print("Waiting...")
-    time.sleep(5)
+# if platform.system() == "Linux":
+#     subprocess.call(["rfkill", "unblock", "bluetooth"])
+#     print("Waiting...")
+#     time.sleep(5)
 
-    os.system("ydotoold &")
+#     os.system("ydotoold &")
+subprocess.call(["ydotool", "mousemove", "1920", "1080"])
 
 pygame.init()
 joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]

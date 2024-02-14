@@ -1,7 +1,5 @@
 import platform
 import subprocess
-
-import playsound
 import pyautogui as pag
 import pygame
 
